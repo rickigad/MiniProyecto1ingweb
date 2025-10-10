@@ -8,8 +8,10 @@ $max = null;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Recoger y validar los números
-    $numeros_str = [$_POST['num1'], $_POST['num2'], $_POST['num3'], $_POST['num4'], $_POST['num5']];
-    $numeros = array_map('floatval', $numeros_str);
+    if (isset($_POST['numeros'])) {
+        $numeros_str = explode(',', $_POST['numeros']);
+        $numeros = array_map('floatval', $numeros_str);
+    }
 
     // Calcular la media
     $count = count($numeros);

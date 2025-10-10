@@ -1,10 +1,8 @@
-<div class="container">
-    <h2 class="text-center">Problema 2: Suma de los números del 1 al 1,000</h2>
-    <div class="card text-center mt-4 shadow-sm">
-        <div class="card-header">
-            Resultado del Cálculo
-        </div>
-        <div class="card-body">
+
+<div class="program-window">
+    <div class="title-bar">Problema 2: Suma de los números del 1 al 1,000</div>
+    <div class="program-content">
+        <div class="result-box text-center">
             <h5 class="card-title">La suma total de los números del 1 al 1,000 es:</h5>
             <p class="display-4 fw-bold text-primary"><?php echo number_format($suma); ?></p>
             <?php if ($suma === $resultado_esperado): ?>
@@ -27,10 +25,10 @@
                     </div>
                 </div>
             </div>
-
-        </div>
-        <div class="card-footer text-muted">
-            <small>Cálculo realizado con la fórmula de Gauss: n * (n + 1) / 2</small>
+            <div class="card-footer text-muted">
+                <small>Cálculo realizado con la fórmula de Gauss: n * (n + 1) / 2</small>
+            </div>
         </div>
     </div>
 </div>
+

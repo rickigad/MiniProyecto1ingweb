@@ -1,10 +1,11 @@
-<div class="container">
-    <h2 class="text-center">Problema 4: Suma de Pares e Impares (1-200)</h2>
-    <div class="row mt-4 justify-content-center">
-        <div class="col-md-5 mb-3">
-            <div class="card text-center border-primary shadow-sm">
-                <div class="card-header bg-primary text-white">Suma de Números Pares</div>
-                <div class="card-body">
+
+<div class="program-window">
+    <div class="title-bar">Problema 4: Suma de Pares e Impares (1-200)</div>
+    <div class="program-content">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="result-box text-center">
+                    <h4 class="text-primary">Suma de Números Pares</h4>
                     <p class="display-5 fw-bold"><?php echo number_format($suma_pares); ?></p>
                     <div class="accordion" id="accordionPares">
                         <div class="accordion-item">
@@ -22,11 +23,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-5 mb-3">
-            <div class="card text-center border-info shadow-sm">
-                <div class="card-header bg-info text-white">Suma de Números Impares</div>
-                <div class="card-body">
+            <div class="col-md-6">
+                <div class="result-box text-center">
+                    <h4 class="text-info">Suma de Números Impares</h4>
                     <p class="display-5 fw-bold"><?php echo number_format($suma_impares); ?></p>
                     <div class="accordion" id="accordionImpares">
                         <div class="accordion-item">
@@ -47,3 +46,4 @@
         </div>
     </div>
 </div>
+

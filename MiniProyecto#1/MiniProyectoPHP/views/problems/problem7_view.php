@@ -1,10 +1,10 @@
-<div class="container">
-    <h2 class="text-center">Problema 7: Calculadora de Datos Estadísticos</h2>
 
-    <?php if ($step === 'initial'): ?>
-        <div class="card mt-4">
-            <div class="card-header">Paso 1: Definir cantidad</div>
-            <div class="card-body">
+<div class="program-window">
+    <div class="title-bar">Problema 7: Calculadora de Datos Estadísticos</div>
+    <div class="program-content">
+        <?php if ($step === 'initial'): ?>
+            <div class="result-box">
+                <h4>Paso 1: Definir cantidad</h4>
                 <form method="post">
                     <input type="hidden" name="step" value="show_grades_form">
                     <div class="mb-3">
@@ -14,12 +14,10 @@
                     <button type="submit" class="btn btn-primary">Siguiente →</button>
                 </form>
             </div>
-        </div>
 
-    <?php elseif ($step === 'show_grades_form' && $cantidad_notas > 0): ?>
-        <div class="card mt-4">
-            <div class="card-header">Paso 2: Ingresar notas</div>
-            <div class="card-body">
+        <?php elseif ($step === 'show_grades_form' && $cantidad_notas > 0): ?>
+            <div class="result-box">
+                <h4>Paso 2: Ingresar notas</h4>
                 <form method="post">
                     <input type="hidden" name="step" value="calculate_stats">
                     <input type="hidden" name="cantidad_notas" value="<?php echo $cantidad_notas; ?>">
@@ -33,12 +31,10 @@
                     <button type="submit" class="btn btn-success mt-3">Calcular Estadísticas</button>
                 </form>
             </div>
-        </div>
 
-    <?php elseif ($step === 'calculate_stats' && $resultados): ?>
-        <div class="card mt-4">
-            <div class="card-header">Paso 3: Resultados</div>
-            <div class="card-body">
+        <?php elseif ($step === 'calculate_stats' && $resultados): ?>
+            <div class="result-box">
+                <h4>Paso 3: Resultados</h4>
                 <div class="alert alert-success">
                     <h4 class="alert-heading">Resultados Finales</h4>
                     <ul class="list-unstyled mb-0">
@@ -52,11 +48,12 @@
                 </div>
                 <a href="" class="btn btn-secondary">← Volver a empezar</a>
             </div>
-        </div>
-    <?php else: ?>
-        <div class="alert alert-warning mt-4">
-            Hubo un error o no se ingresaron datos. 
-            <a href="" class="alert-link">Por favor, vuelva a empezar</a>.
-        </div>
-    <?php endif; ?>
+        <?php else: ?>
+            <div class="alert alert-warning mt-4">
+                Hubo un error o no se ingresaron datos. 
+                <a href="" class="alert-link">Por favor, vuelva a empezar</a>.
+            </div>
+        <?php endif; ?>
+    </div>
 </div>
+

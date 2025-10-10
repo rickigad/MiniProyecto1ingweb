@@ -5,9 +5,8 @@ $edades_ingresadas = [];
 $estadisticas_json = '';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $edades_ingresadas = [
-        $_POST['edad1'], $_POST['edad2'], $_POST['edad3'], $_POST['edad4'], $_POST['edad5']
-    ];
+    if (isset($_POST['edades'])) {
+        $edades_ingresadas = array_map('intval', explode(',', $_POST['edades']));
 
     // Clasificación de edades
     foreach ($edades_ingresadas as $edad_str) {

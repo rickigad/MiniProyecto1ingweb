@@ -1,1 +1,60 @@
-/* Custom styles can go here */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #6c757d;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.card-body {
+    background-color: #f8f9fa;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.result-box {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.result-box h4 {
+    color: #007bff;
+}
+
+
+.program-window {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.program-window .title-bar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: bold;
+}
+
+.program-window .program-content {
+    padding: 20px;
+}

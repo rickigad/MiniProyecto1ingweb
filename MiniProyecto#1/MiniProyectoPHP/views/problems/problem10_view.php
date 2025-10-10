@@ -1,12 +1,12 @@
-<div class="container">
-    <h2 class="text-center">Problema 10: Reporte de Ventas</h2>
 
-    <div class="row">
-        <!-- Formulario de Entrada -->
-        <div class="col-md-4">
-            <div class="card mt-4">
-                <div class="card-header">Registrar Venta</div>
-                <div class="card-body">
+<div class="program-window">
+    <div class="title-bar">Problema 10: Reporte de Ventas</div>
+    <div class="program-content">
+        <div class="row">
+            <!-- Formulario de Entrada -->
+            <div class="col-md-4">
+                <div class="result-box">
+                    <h4>Registrar Venta</h4>
                     <form method="post">
                         <div class="mb-3">
                             <label for="vendedor" class="form-label">Vendedor:</label>
@@ -39,45 +39,48 @@
                     </form>
                 </div>
             </div>
-        </div>
 
-        <!-- Tabla de Resultados -->
-        <div class="col-md-8">
-            <h4 class="mt-4">Tabla de Ventas Acumuladas</h4>
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover text-center">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Producto</th>
-                            <th>Vendedor 1</th>
-                            <th>Vendedor 2</th>
-                            <th>Vendedor 3</th>
-                            <th>Vendedor 4</th>
-                            <th class="table-info">Total por Producto</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($sales_data as $p_index => $product_sales): ?>
-                            <tr>
-                                <td class="fw-bold">Producto <?php echo $p_index + 1; ?></td>
-                                <?php foreach ($product_sales as $sale): ?>
-                                    <td>$<?php echo number_format($sale, 2); ?></td>
+            <!-- Tabla de Resultados -->
+            <div class="col-md-8">
+                <div class="result-box">
+                    <h4 class="mt-4">Tabla de Ventas Acumuladas</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover text-center">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Vendedor 1</th>
+                                    <th>Vendedor 2</th>
+                                    <th>Vendedor 3</th>
+                                    <th>Vendedor 4</th>
+                                    <th class="table-info">Total por Producto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($sales_data as $p_index => $product_sales): ?>
+                                    <tr>
+                                        <td class="fw-bold">Producto <?php echo $p_index + 1; ?></td>
+                                        <?php foreach ($product_sales as $sale): ?>
+                                            <td>$<?php echo number_format($sale, 2); ?></td>
+                                        <?php endforeach; ?>
+                                        <td class="table-info fw-bold">$<?php echo number_format($totales_producto[$p_index], 2); ?></td>
+                                    </tr>
                                 <?php endforeach; ?>
-                                <td class="table-info fw-bold">$<?php echo number_format($totales_producto[$p_index], 2); ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                    <tfoot class="table-light">
-                        <tr class="fw-bold">
-                            <td>Total por Vendedor</td>
-                            <?php foreach ($totales_vendedor as $total): ?>
-                                <td>$<?php echo number_format($total, 2); ?></td>
-                            <?php endforeach; ?>
-                            <td class="table-dark fw-bolder">$<?php echo number_format($gran_total, 2); ?></td>
-                        </tr>
-                    </tfoot>
-                </table>
+                            </tbody>
+                            <tfoot class="table-light">
+                                <tr class="fw-bold">
+                                    <td>Total por Vendedor</td>
+                                    <?php foreach ($totales_vendedor as $total): ?>
+                                        <td>$<?php echo number_format($total, 2); ?></td>
+                                    <?php endforeach; ?>
+                                    <td class="table-dark fw-bolder">$<?php echo number_format($gran_total, 2); ?></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
