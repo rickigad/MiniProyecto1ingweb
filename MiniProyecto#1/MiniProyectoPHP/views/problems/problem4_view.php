@@ -1,49 +1,56 @@
+<?php
+// --- VIEW: Suma de Números Pares e Impares ---
+?>
 
 <div class="program-window">
-    <div class="title-bar">Problema 4: Suma de Pares e Impares (1-200)</div>
+    <div class="title-bar">Problema 4: Suma de Pares e Impares</div>
     <div class="program-content">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="result-box text-center">
-                    <h4 class="text-primary">Suma de Números Pares</h4>
-                    <p class="display-5 fw-bold"><?php echo number_format($suma_pares); ?></p>
-                    <div class="accordion" id="accordionPares">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePares">
-                                    Ver desglose
-                                </button>
-                            </h2>
-                            <div id="collapsePares" class="accordion-collapse collapse" data-bs-parent="#accordionPares">
-                                <div class="accordion-body text-muted" style="font-size: 0.9rem;">
-                                    <?php echo $pares_expression; ?>
-                                </div>
-                            </div>
-                        </div>
+
+        <form method="POST" action="index.php?page=problem4" class="row g-3 align-items-end mb-4">
+            <div class="col-md-5">
+                <label for="inicio" class="form-label">Número Inicial:</label>
+                <input type="number" id="inicio" name="inicio" value="<?php echo htmlspecialchars($inicio_form); ?>" class="form-control">
+            </div>
+            
+            <div class="col-md-5">
+                <label for="fin" class="form-label">Número Final:</label>
+                <input type="number" id="fin" name="fin" value="<?php echo htmlspecialchars($fin_form); ?>" class="form-control">
+            </div>
+            
+            <div class="col-md-2">
+                <button type="submit" name="calcular" class="btn btn-primary w-100">Calcular</button>
+            </div>
+        </form>
+
+        <?php if (!empty($errores)): ?>
+            <div class="alert alert-danger">
+                <h4 class="alert-heading">Errores de Validación</h4>
+                <ul class="mb-0">
+                    <?php foreach ($errores as $error): ?>
+                        <li><?php echo htmlspecialchars($error); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php elseif (isset($resultadoPares)): ?>
+            <div class="alert alert-success">
+                <h4 class="alert-heading">Resultados del Rango [<?php echo htmlspecialchars($inicio_form); ?> - <?php echo htmlspecialchars($fin_form); ?>]</h4>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Números Pares</h5>
+                        <p><strong>Suma Total:</strong> <?php echo number_format($resultadoPares['suma']); ?></p>
+                        <p><strong>Cantidad:</strong> <?php echo number_format($resultadoPares['cantidad']); ?></p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Números Impares</h5>
+                        <p><strong>Suma Total:</strong> <?php echo number_format($resultadoImpares['suma']); ?></p>
+                        <p><strong>Cantidad:</strong> <?php echo number_format($resultadoImpares['cantidad']); ?></p>
                     </div>
                 </div>
+                <hr>
+                <p class="mb-0"><strong>Suma Total (Pares + Impares): <?php echo number_format($resultadoPares['suma'] + $resultadoImpares['suma']); ?></strong></p>
             </div>
-            <div class="col-md-6">
-                <div class="result-box text-center">
-                    <h4 class="text-info">Suma de Números Impares</h4>
-                    <p class="display-5 fw-bold"><?php echo number_format($suma_impares); ?></p>
-                    <div class="accordion" id="accordionImpares">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseImpares">
-                                    Ver desglose
-                                </button>
-                            </h2>
-                            <div id="collapseImpares" class="accordion-collapse collapse" data-bs-parent="#accordionImpares">
-                                <div class="accordion-body text-muted" style="font-size: 0.9rem;">
-                                    <?php echo $impares_expression; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php endif; ?>
+
     </div>
 </div>
-

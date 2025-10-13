@@ -44,6 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Preparar datos para el gráfico (JSON)
     $estadisticas_json = json_encode($estadisticas);
-}
+}}
 
 require_once __DIR__ . '/../../../views/problems/problem5_view.php';

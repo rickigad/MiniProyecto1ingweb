@@ -1,34 +1,59 @@
+<?php
+// --- VIEW: Muestra la interfaz para la Suma de Números (Versión Eficiente) ---
+?>
 
 <div class="program-window">
-    <div class="title-bar">Problema 2: Suma de los números del 1 al 1,000</div>
+    <div class="title-bar">Problema 2: Suma Eficiente con Historial</div>
     <div class="program-content">
-        <div class="result-box text-center">
-            <h5 class="card-title">La suma total de los números del 1 al 1,000 es:</h5>
-            <p class="display-4 fw-bold text-primary"><?php echo number_format($suma); ?></p>
-            <?php if ($suma === $resultado_esperado): ?>
-                <p class="text-success"><small>(El resultado coincide con el valor de verificación del PDF)</small></p>
-            <?php else: ?>
-                <p class="text-danger"><small>(El resultado NO coincide con el valor de verificación del PDF)</small></p>
-            <?php endif; ?>
 
-            <div class="accordion mt-3" id="accordionSum">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                            Ver desglose de la suma
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionSum">
-                        <div class="accordion-body text-muted" style="font-size: 0.9rem;">
-                            <?php echo $sum_expression; ?>
-                        </div>
-                    </div>
-                </div>
+        <!-- Mensaje de Alerta -->
+        <?php if (isset($message_to_show)): ?>
+            <div class="alert alert-<?php echo htmlspecialchars($message_to_show['type']); ?> alert-dismissible fade show" role="alert">
+                <?php echo htmlspecialchars($message_to_show['text']); ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            <div class="card-footer text-muted">
-                <small>Cálculo realizado con la fórmula de Gauss: n * (n + 1) / 2</small>
+        <?php endif; ?>
+
+        <!-- Panel de Control -->
+        <div class="card mb-4">
+            <div class="card-header">Panel de Control</div>
+            <div class="card-body d-flex justify-content-center gap-3">
+                <form action="index.php?page=problem2" method="POST">
+                    <input type="hidden" name="action" value="calculate">
+                    <button type="submit" class="btn btn-primary">Calcular Suma (1 a <?php echo LIMITE_SUMA_P2; ?>)</button>
+                </form>
+                <form action="index.php?page=problem2" method="POST" onsubmit="return confirm('¿Está seguro de que desea reiniciar el resultado y el historial?');">
+                     <input type="hidden" name="action" value="reset">
+                     <button type="submit" class="btn btn-danger">Reiniciar</button>
+                </form>
             </div>
         </div>
+
+        <!-- Área de Resultados -->
+        <div class="card">
+            <div class="card-header">Resultados</div>
+            <div class="card-body">
+                <?php if ($resultado === null): ?>
+                    <p class="text-center text-muted">Presione "Calcular Suma" para ver el resultado y el historial.</p>
+                <?php else: ?>
+                    <!-- Resultado Total -->
+                    <div class="alert alert-success">
+                        <h4 class="alert-heading">Suma Total Calculada</h4>
+                        <p class="lead mb-0">El resultado de la suma de los números del 1 al <?php echo LIMITE_SUMA_P2; ?> es: <strong><?php echo number_format($resultado); ?></strong></p>
+                    </div>
+
+                    <!-- Historial de Sumas Parciales -->
+                    <div class="alert alert-info mt-4">
+                        <h4 class="alert-heading">Historial de Sumas Parciales</h4>
+                        <div style="height: 300px; overflow-y: scroll; background-color: white; padding: 10px; border-radius: 5px; font-family: monospace;">
+                            <?php foreach ($historial as $linea): ?>
+                                <div><?php echo htmlspecialchars($linea); ?></div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+
     </div>
 </div>
-

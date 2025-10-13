@@ -1,4 +1,3 @@
-
 <div class="program-window">
     <div class="title-bar">Problema 8: Estación del Año</div>
     <div class="program-content">
@@ -16,6 +15,7 @@
             <div class="result-box mt-4">
                 <h4>Estación del Año</h4>
                 <p>La estación para la fecha seleccionada es: <strong><?php echo $estacion; ?></strong></p>
+                <img src="images/<?php echo $imagen; ?>" alt="<?php echo $estacion; ?>" class="img-fluid mt-3">
             </div>
         <?php endif; ?>
     </div>
