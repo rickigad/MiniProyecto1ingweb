@@ -69,6 +69,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 $file_path = $_FILES['csv_file']['tmp_name'];
                 if (($handle = fopen($file_path, "r")) === false) throw new Exception("No se pudo abrir el archivo CSV.");
 
+                // Omitir la cabecera del CSV
+                fgetcsv($handle);
+
                 $imported_count = 0;
                 $error_count = 0;
                 while (($data = fgetcsv($handle, 1000, ",")) !== false) {

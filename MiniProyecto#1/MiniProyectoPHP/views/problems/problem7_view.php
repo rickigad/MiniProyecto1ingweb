@@ -5,11 +5,16 @@
         <?php if ($step === 'initial'): ?>
             <div class="result-box">
                 <h4>Paso 1: Definir cantidad</h4>
+
+                <?php if (isset($error_message)): ?>
+                    <div class="alert alert-danger"><?php echo $error_message; ?></div>
+                <?php endif; ?>
+
                 <form method="post">
                     <input type="hidden" name="step" value="show_grades_form">
                     <div class="mb-3">
-                        <label for="cantidad_notas" class="form-label">¿Cuántas notas desea ingresar?</label>
-                        <input type="number" class="form-control" id="cantidad_notas" name="cantidad_notas" min="1" required>
+                        <label for="cantidad_notas" class="form-label">¿Cuántas notas desea ingresar? (Máximo <?php echo MAX_NOTAS; ?>)</label>
+                        <input type="number" class="form-control" id="cantidad_notas" name="cantidad_notas" min="1" max="<?php echo MAX_NOTAS; ?>" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Siguiente →</button>
                 </form>

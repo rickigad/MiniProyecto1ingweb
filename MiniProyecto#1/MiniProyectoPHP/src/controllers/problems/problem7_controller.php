@@ -1,12 +1,19 @@
 <?php
 
+define('MAX_NOTAS', 20);
+
 $step = $_POST['step'] ?? 'initial';
 $cantidad_notas = null;
 $resultados = null;
 $notas = [];
+$error_message = null;
 
 if ($step === 'show_grades_form') {
     $cantidad_notas = intval($_POST['cantidad_notas']);
+    if ($cantidad_notas > MAX_NOTAS) {
+        $error_message = 'El número máximo de notas permitido es ' . MAX_NOTAS . '.';
+        $step = 'initial'; // Volver al paso inicial si hay error
+    }
 }
 
 if ($step === 'calculate_stats') {

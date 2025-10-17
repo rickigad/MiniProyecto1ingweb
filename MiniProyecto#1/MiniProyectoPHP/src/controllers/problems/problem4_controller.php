@@ -6,7 +6,7 @@
 // --- Clase de Lógica ---
 if (!class_exists('CalculadoraParesImpares')) {
     class CalculadoraParesImpares {
-        public static function validarNumero($valor, $min = 1, $max = 10000) {
+        public static function validarNumero($valor, $min = 1, $max = 200) {
             if (!is_numeric($valor)) return false;
             $numero = filter_var($valor, FILTER_VALIDATE_INT, [
                 "options" => ["min_range" => $min, "max_range" => $max]
@@ -56,12 +56,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['calcular'])) {
 
     $inicio = CalculadoraParesImpares::validarNumero($inicio_form);
     if ($inicio === false) {
-        $errores[] = "El número inicial debe ser un entero válido entre 1 y 10000.";
+        $errores[] = "El número inicial debe ser un entero válido entre 1 y 200.";
     }
 
     $fin = CalculadoraParesImpares::validarNumero($fin_form);
     if ($fin === false) {
-        $errores[] = "El número final debe ser un entero válido entre 1 y 10000.";
+        $errores[] = "El número final debe ser un entero válido entre 1 y 200.";
     }
 
     if ($inicio !== false && $fin !== false && $inicio > $fin) {

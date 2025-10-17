@@ -9,12 +9,12 @@
         <form method="POST" action="index.php?page=problem4" class="row g-3 align-items-end mb-4">
             <div class="col-md-5">
                 <label for="inicio" class="form-label">Número Inicial:</label>
-                <input type="number" id="inicio" name="inicio" value="<?php echo htmlspecialchars($inicio_form); ?>" class="form-control">
+                <input type="number" id="inicio" name="inicio" value="<?php echo htmlspecialchars($inicio_form); ?>" class="form-control" min="1" max="200">
             </div>
             
             <div class="col-md-5">
                 <label for="fin" class="form-label">Número Final:</label>
-                <input type="number" id="fin" name="fin" value="<?php echo htmlspecialchars($fin_form); ?>" class="form-control">
+                <input type="number" id="fin" name="fin" value="<?php echo htmlspecialchars($fin_form); ?>" class="form-control" min="1" max="200">
             </div>
             
             <div class="col-md-2">
